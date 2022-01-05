@@ -8,7 +8,6 @@ class Solution(object):
         res = 0
         max_d = 0
         max_a = properties[-1][0]
-        print(properties)
         for a, d in properties:
             if d < max_d:
                 res += 1
