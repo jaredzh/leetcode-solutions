@@ -14,9 +14,7 @@ class Solution(object):
                 res.append(path[:])
             for i in range(1, len(s)+1):
                 if palin(s[:i]):
-                    path.append(s[:i])
-                    dfs(s[i:], path)
-                    path.pop()
+                    dfs(s[i:], path+[s[:i]])
            
         dfs(s, [])
         return res
