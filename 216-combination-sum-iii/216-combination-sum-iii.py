@@ -7,8 +7,6 @@ class Solution(object):
         """
         res = []
         def dfs(path, k_in, num):
-            if k_in > k:
-                return
             if k_in == k and sum(path) == n:
                 res.append(path)
             for i in range(num, 10):
