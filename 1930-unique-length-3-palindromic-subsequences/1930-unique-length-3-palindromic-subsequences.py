@@ -6,14 +6,14 @@ class Solution(object):
         """
         seen = set()
         res = 0
-        for i, v in enumerate(s):
+        for left, v in enumerate(s):
             if v not in seen:
                 seen.add(v)
-                right = -1
-                for j in range(i+1, len(s)):
+                right = 0
+                for j in range(left+1, len(s)):
                     if s[j] == v:
                         right = j
-                if right == -1:
+                if not right:
                     continue
-                res += len(set(s[i+1:right]))
+                res += len(set(s[left+1:right]))
         return res
