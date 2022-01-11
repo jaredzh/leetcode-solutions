@@ -8,19 +8,24 @@ class Solution(object):
         """
         G = defaultdict(list)
         for u, v, w in times:
-            G[u].append([w, v])
+            G[u].append([v, w])
         dist = {node:float("inf") for node in range(1, n+1)}
+        seen = set()
+        dist[k] = 0
         
-        def dfs(node, curr_w):
-            if curr_w >= dist[node]:
-                return
-            dist[node] = curr_w
-            for w, n in sorted(G[node]):
-                dfs(n, curr_w+w)
-        
-        dfs(k, 0)
-        res = max(dist.values())
-        if not res < float("inf"):
-            return -1
-        return res
+        while True:
+            cur_cand = -1
+            cur_w = float("inf")
+            for node, w in dist.items():
+                if node not in seen and w < cur_w:
+                    cur_cand = node
+                    cur_w = w
             
+            if cur_cand < 0:
+                break
+            seen.add(cur_cand)
+            for node, d in G[cur_cand]:
+                dist[node] = min(dist[node], dist[cur_cand]+d)
+        
+        ans = max(dist.values())
+        return ans if ans < float('inf') else -1
