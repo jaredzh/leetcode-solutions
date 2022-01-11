@@ -6,19 +6,21 @@ class Solution(object):
         :type k: int
         :rtype: int
         """
-        graph = collections.defaultdict(list)
+        G = defaultdict(list)
         for u, v, w in times:
-            graph[u].append((w, v))
-
-        dist = {node: float('inf') for node in xrange(1, n+1)}
-
-        def dfs(node, elapsed):
-            if elapsed >= dist[node]: return
-            dist[node] = elapsed
-            for time, nei in sorted(graph[node]):
-                dfs(nei, elapsed + time)
-
+            G[u].append([w, v])
+        dist = {node:float("inf") for node in range(1, n+1)}
+        
+        def dfs(node, curr_w):
+            if curr_w >= dist[node]:
+                return
+            dist[node] = curr_w
+            for w, n in sorted(G[node]):
+                dfs(n, curr_w+w)
+        
         dfs(k, 0)
-        ans = max(dist.values())
-        return ans if ans < float('inf') else -1
+        res = max(dist.values())
+        if not res < float("inf"):
+            return -1
+        return res
             
