@@ -12,7 +12,5 @@ class Solution(object):
             if nums[slow-2] != nums[fast]:
                 nums[slow] = nums[fast]
                 slow += 1
-                fast += 1
-            else:
-                fast += 1
+            fast += 1
         return slow
