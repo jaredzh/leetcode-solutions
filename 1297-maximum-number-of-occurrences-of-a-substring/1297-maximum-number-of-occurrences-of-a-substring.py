@@ -10,9 +10,7 @@ class Solution(object):
         d = defaultdict(int)
         for i in range(len(s)-minSize+1):
             s1 = s[i:i+minSize]
-            if s1 in d:
-                d[s1] += 1
-            elif len(set(s1)) <= maxLetters:
+            if s1 in d or len(set(s1)) <= maxLetters:
                 d[s1] += 1
         if not d:
             return 0
