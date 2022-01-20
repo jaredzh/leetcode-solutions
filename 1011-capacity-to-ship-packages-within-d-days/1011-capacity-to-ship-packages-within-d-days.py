@@ -8,9 +8,7 @@ class Solution(object):
         left, right = max(weights), sum(weights)
         
         def days_to_ship(capacity):
-            ret = 0
-            i = 0
-            k = 0
+            ret, i, k = 0, 0, 0
             while i < len(weights):
                 k += weights[i]
                 if k > capacity:
