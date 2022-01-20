@@ -17,10 +17,10 @@ class Solution(object):
                 i += 1
             return ret
         
-        while left <= right:
+        while left < right:
             mid = (left+right)//2
             if days_to_ship(mid) < days:
-                right = mid-1
+                right = mid
             else:
                 left = mid+1
         return left
