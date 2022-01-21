@@ -11,7 +11,7 @@ class Solution(object):
         :type postorder: List[int]
         :rtype: TreeNode
         """
-        if not preorder:
+        if not preorder or not postorder:
             return None
         k = postorder.pop()
         preorder.pop(0)
