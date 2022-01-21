@@ -21,7 +21,5 @@ class Solution(object):
         next_root = postorder[-1]
         i = preorder.index(next_root)
         root.right = self.constructFromPrePost(preorder[i:], postorder)
-        if not postorder or not preorder:
-            return root
         root.left = self.constructFromPrePost(preorder[:i], postorder)
         return root
