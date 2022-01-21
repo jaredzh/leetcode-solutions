@@ -4,17 +4,13 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        d = Counter(nums)
-        max_n = 0
-        freq = 0
-        for k, v in d.items():
-            if v > freq:
-                freq = v
-                max_n = k
-        cands = [x for x, v in d.items() if v == freq]
+        d = defaultdict(list)
+        deg = 0
         res = len(nums)
-        nums_reversed = nums[::-1]
-        for c in cands:
-            res = min(res, (len(nums)-1-nums_reversed.index(c))-nums.index(c)+1)
+        for i, v in enumerate(nums):
+            d[v].append(i)
+            deg = max(deg, len(d[v]))
+        for k, v in d.items():
+            if len(v) == deg:
+                res = min(res, v[-1]-v[0]+1)
         return res
-        
