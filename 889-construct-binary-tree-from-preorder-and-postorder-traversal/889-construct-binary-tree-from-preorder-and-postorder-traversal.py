@@ -14,8 +14,8 @@ class Solution(object):
         if not preorder or not postorder:
             return None
         k = postorder.pop()
-        preorder.pop(0)
         root = TreeNode(k)
+        preorder.pop(0)
         if not postorder or not preorder:
             return root
         next_root = postorder[-1]
