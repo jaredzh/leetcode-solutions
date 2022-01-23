@@ -10,8 +10,7 @@ class Solution(object):
             if not n:
                 return
             for i, v in enumerate(n):
-                if v in seen:
-                    continue
+                
                 seen.add(v)
                 dfs(path+[v], seen, n[i+1:])
                 seen.remove(v)
