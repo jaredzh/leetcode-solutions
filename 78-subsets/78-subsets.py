@@ -5,14 +5,11 @@ class Solution(object):
         :rtype: List[List[int]]
         """
         res = []
-        def dfs(path, seen, n):
+        def dfs(path, n):
             res.append(path)
             if not n:
                 return
             for i, v in enumerate(n):
-                
-                seen.add(v)
-                dfs(path+[v], seen, n[i+1:])
-                seen.remove(v)
-        dfs([], set(), nums)
+                dfs(path+[v], n[i+1:])
+        dfs([], nums)
         return res
