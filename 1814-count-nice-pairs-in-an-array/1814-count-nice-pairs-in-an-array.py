@@ -10,4 +10,5 @@ class Solution(object):
             b = int(str(a)[::-1])
             res += d[a-b]
             d[a-b] += 1
+        print(d)
         return res%(10**9 + 7)
