@@ -5,8 +5,6 @@ class Solution(object):
         :rtype: int
         """
         m, n = len(matrix), len(matrix[0])
-        dp = [[0]*n for _ in range(m)]
-        
         for i in range(m):
             for j in range(n):
                 if i>0 and j>0 and matrix[i][j]:
