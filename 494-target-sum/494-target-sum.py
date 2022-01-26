@@ -1,15 +1,11 @@
-class Solution(object):
-    def findTargetSumWays(self, nums, target):
-        """
-        :type nums: List[int]
-        :type target: int
-        :rtype: int
-        """
-        counts = Counter({0:1})
-        for n in nums:
-            d = Counter()
-            for c in counts:
-                d[c+n] += counts[c]
-                d[c-n] += counts[c]
-            counts = d
-        return counts[target]
+class Solution:
+    def findTargetSumWays(self, nums: List[int], target: int) -> int:
+        @lru_cache(None)
+        def deep(index, cur):
+            if index == len(nums) and cur == target:
+                return 1
+            if index == len(nums):
+                return 0
+            return deep(index + 1, cur + nums[index]) + deep(index + 1, cur - nums[index])
+    
+        return deep(0, 0)
