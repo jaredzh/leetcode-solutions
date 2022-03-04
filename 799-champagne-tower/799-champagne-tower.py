@@ -6,7 +6,7 @@ class Solution(object):
         :type query_glass: int
         :rtype: float
         """
-        dp = defaultdict(int)
+        dp = defaultdict(float)
         dp[(0,0)] = poured
         for i in range(0, query_row+1):
             for j in range(0, i+1):
