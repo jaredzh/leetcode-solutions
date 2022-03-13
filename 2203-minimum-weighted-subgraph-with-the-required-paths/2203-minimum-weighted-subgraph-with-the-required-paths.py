@@ -17,10 +17,7 @@ class Solution(object):
             dist = []
             res = [float("inf")]*n
             for i in range(n):
-                if i == src:
-                    dist.append((0, i))
-                else:
-                    dist.append((float("inf"), i))
+                dist.append((0, i) if i == src else (float("inf"), i))
             heapq.heapify(dist)
             seen = set()
             while True: 
@@ -29,12 +26,9 @@ class Solution(object):
                 k = heapq.heappop(dist)
                 if k[1] in seen:
                     continue
-                seen.add(k[1])
-                
-                res[k[1]] = min(res[k[1]], k[0])
-                
+                seen.add(k[1])     
+                res[k[1]] = min(res[k[1]], k[0])     
                 for node, w in graph[k[1]]:
-                    #weight = min(dist[node], k[0]+w)
                     heapq.heappush(dist, (k[0]+w, node))
             return res
         l1 = helper(n, src1, G)
