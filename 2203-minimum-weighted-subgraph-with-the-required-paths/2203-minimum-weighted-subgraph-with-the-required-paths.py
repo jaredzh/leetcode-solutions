@@ -13,7 +13,7 @@ class Solution(object):
         for e in edges:
             G[e[0]].append(e[1:])
             reverse_G[e[1]].append([e[0], e[2]])
-        def helper(n, src, graph):
+        def f(n, src, graph):
             dist = []
             res = [float("inf")]*n
             for i in range(n):
@@ -31,11 +31,8 @@ class Solution(object):
                 for node, w in graph[k[1]]:
                     heapq.heappush(dist, (k[0]+w, node))
             return res
-        l1 = helper(n, src1, G)
-        l2 = helper(n, src2, G)
-        l3 = helper(n, dest, reverse_G)
         res = float("inf")
-        for i, j, k in zip(l1, l2, l3):
+        for i, j, k in zip(f(n, src1, G), f(n, src2, G), f(n, dest, reverse_G)):
             res = min(res, i+j+k)
         return res if res != float("inf") else -1
         
