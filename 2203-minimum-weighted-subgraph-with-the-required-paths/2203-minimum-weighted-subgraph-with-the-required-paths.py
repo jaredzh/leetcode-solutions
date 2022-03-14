@@ -23,13 +23,13 @@ class Solution(object):
             while True: 
                 if not dist:
                     break
-                k = heapq.heappop(dist)
-                if k[1] in seen:
+                curr_w, curr = heapq.heappop(dist)
+                if curr in seen:
                     continue
-                seen.add(k[1])     
-                res[k[1]] = min(res[k[1]], k[0])     
-                for node, w in graph[k[1]]:
-                    heapq.heappush(dist, (k[0]+w, node))
+                seen.add(curr)     
+                res[curr] = min(res[curr], curr_w)     
+                for node, w in graph[curr]:
+                    heapq.heappush(dist, (curr_w+w, node))
             return res
         res = float("inf")
         for i, j, k in zip(f(n, src1, G), f(n, src2, G), f(n, dest, reverse_G)):
