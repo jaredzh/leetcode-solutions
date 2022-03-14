@@ -7,23 +7,22 @@ class Solution(object):
         """
         def topo_sort(n, G):
             res, indegree = [], [0]*n
-            import queue
-            que = queue.Queue()
+            dq = deque()
             for i in range(n):
                 for j in G[i]:
                     indegree[j] += 1
 
             for i in range(n):
                 if indegree[i] == 0:
-                    que.put(i)
+                    dq.append(i)
 
-            while not que.empty():
-                curr = que.get()
+            while dq:
+                curr = dq.popleft()
                 res.append(curr)
                 for j in G[curr]:
                     indegree[j] -= 1
                     if indegree[j] == 0:
-                        que.put(j)
+                        dq.append(j)
             return res
         
         d = defaultdict(list)
