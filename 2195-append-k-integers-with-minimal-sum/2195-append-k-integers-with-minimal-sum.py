@@ -8,9 +8,7 @@ class Solution(object):
         def f(n):
             return n*(n+1)/2
         res = 0
-        nums = [0]+nums
-        nums = list(set(nums))
-        nums.sort()
+        nums = sorted(list(set([0]+nums)))
         for i in range(len(nums)-1):
             if not k:
                 break
