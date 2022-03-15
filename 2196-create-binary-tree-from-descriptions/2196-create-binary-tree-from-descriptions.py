@@ -11,9 +11,10 @@ class Solution(object):
         :rtype: Optional[TreeNode]
         """
         nodes = defaultdict(TreeNode)
+        parents = set()
         childs = set()
-        for x in descriptions:
-            parent, child, isLeft = x
+        for parent, child, isLeft in descriptions:
+            parents.add(parent)
             childs.add(child)
             if parent not in nodes:
                 nodes[parent] = TreeNode(parent)
@@ -23,8 +24,6 @@ class Solution(object):
                 nodes[parent].left =nodes[child]
             else:
                 nodes[parent].right = nodes[child]
-        for key in nodes:
-            if key not in childs:
-                return nodes[key]
+        return nodes[(parents-childs).pop()]
         
         
