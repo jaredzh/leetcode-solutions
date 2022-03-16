@@ -6,8 +6,7 @@ class Solution(object):
         :rtype: int
         """
         d = defaultdict(int)
-        for target in sorted(set(nums)):
-            for i in range(len(nums)-1):
-                if nums[i]==key and nums[i+1]==target:
-                    d[target]+=1
+        for i in range(len(nums)-1):
+            if nums[i] == key:
+                d[nums[i+1]] += 1
         return max(d, key=d.get)
