@@ -6,7 +6,7 @@ class Solution(object):
         :rtype: int
         """
         d = defaultdict(int)
-        for target in range(1, 1001):
+        for target in sorted(set(nums)):
             for i in range(len(nums)-1):
                 if nums[i]==key and nums[i+1]==target:
                     d[target]+=1
