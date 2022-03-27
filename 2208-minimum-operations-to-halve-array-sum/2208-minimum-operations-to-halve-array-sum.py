@@ -4,12 +4,12 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        tot = float(sum(nums))
-        tar = tot / 2
-        res = 0
+        tot, res = 0.0, 0
         heap = []
         for n in nums:
+            tot += n
             heapq.heappush(heap, -float(n))
+        tar = tot / 2.0
         while tot > tar:
             curr = heapq.heappop(heap)
             tot += (curr/2.0)
