@@ -4,7 +4,7 @@ class Solution:
         left, right = 0, m*n
         
         while left < right:
-            mid = (left + right) // 2
+            mid = (left + right) >> 1
             row, col = mid // n, mid % n
             if matrix[row][col] == target:
                 return True
