@@ -4,15 +4,11 @@ class Solution:
         for i, val in enumerate(s):
             last_occ[val] = i
         
-        left = 0
-        n = len(s)
-        res = []
+        left, n, res = 0, len(s), []
         while left < n:
-            right = last_occ[s[left]]
-            k = 0
+            k, right = 0, last_occ[s[left]]
             while left <= right:
                 right = max(right, last_occ[s[left]])
-                left += 1
-                k += 1
+                left, k = left + 1, k + 1
             res.append(k)
         return res
