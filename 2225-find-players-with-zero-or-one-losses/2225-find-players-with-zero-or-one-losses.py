@@ -6,6 +6,5 @@ class Solution:
             if winner not in losses:
                 losses[winner] = 0
             losses[loser] += 1
-        res = [sorted([key for key, val in losses.items() if val == 0]),
-               sorted([key for key, val in losses.items() if val == 1])]
-        return res
+        return [sorted([key for key, val in losses.items() if val == 0]),
+                sorted([key for key, val in losses.items() if val == 1])]
