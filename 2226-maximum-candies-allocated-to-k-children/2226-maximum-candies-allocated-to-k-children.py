@@ -11,10 +11,10 @@ class Solution:
         
         left, right = 0, sum(candies)//k
         
-        while left <= right:
+        while left < right:
             mid = (left + right + 1) // 2
-            if is_valid(mid):
-                left = mid + 1
-            else:
+            if not is_valid(mid):
                 right = mid - 1
-        return left - 1 if left else left
+            else:
+                left = mid 
+        return left
