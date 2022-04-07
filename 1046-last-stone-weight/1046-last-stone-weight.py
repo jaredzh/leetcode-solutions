@@ -4,8 +4,7 @@ class Solution:
         heapq.heapify(stones)
         
         while len(stones) > 1:
-            y = heapq.heappop(stones)
-            x = heapq.heappop(stones)
+            y, x = heapq.heappop(stones), heapq.heappop(stones)
             
             if x != y:
                 heapq.heappush(stones, y-x)
