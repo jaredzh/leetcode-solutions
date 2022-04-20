@@ -15,7 +15,6 @@ class BSTIterator:
             self.l.append(n.val)
             f(n.left)
         f(root)
-        print(self.l)
 
     def next(self) -> int:
         return self.l.pop()
