@@ -20,13 +20,11 @@ class Solution:
         fi, se = None, None
         for i in range(len(l)-1):
             n1, n2 = l[i], l[i+1]
-            #print(n1.val, n2.val)
             if n1.val > n2.val:
                 if fi is None:
                     fi = i
                 else:
                     se = i+1
-                print(fi, se)
         if not se:
             se = fi+1
         l[fi].val, l[se].val = l[se].val, l[fi].val
