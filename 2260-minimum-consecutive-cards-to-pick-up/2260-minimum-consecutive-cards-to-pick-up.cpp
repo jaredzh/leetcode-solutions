@@ -1,10 +1,17 @@
-class Solution:
-    def minimumCardPickup(self, cards: List[int]) -> int:
-        d = defaultdict(int)
-        res = float("inf")
-        for i, v in enumerate(cards):
-            if v in d:  
-                res = min(res, i-d[v]+1)
-            d[v] = i
+class Solution {
+public:
+    int minimumCardPickup(vector<int>& cards) {
+        unordered_map<int, int> m;
+        int res = INT_MAX;
         
-        return res if res < float("inf") else -1
+        for(int i = 0; i < cards.size(); ++i) {
+            int v = cards[i];
+            if(m.find(v) != m.end()) {
+                res = min(res, i - m[v] + 1);
+            }
+            m[v] = i;
+        }
+        
+        return res == INT_MAX ? -1 : res;
+    }
+};
