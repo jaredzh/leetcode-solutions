@@ -13,6 +13,8 @@ public:
                 v.push_back(nums[j]);
                 if (ct <= k) {
                     s.insert(v);
+                } else {
+                    break;
                 }
             }
         }
