@@ -6,6 +6,7 @@ class Solution:
         def helper(i):
             if i == len(cookies):
                 self.res = min(self.res, max(self.l))
+                return
                 
             if self.res <= max(self.l):
                 return
